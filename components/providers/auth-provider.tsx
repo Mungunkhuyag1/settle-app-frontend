@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { getAuthMe, signIn, signUp, type Session, type User } from "@/lib/api";
+import { getCurrentUser, signIn, signUp, type Session, type User } from "@/lib/api";
 
 const STORAGE_KEY = "settle-session";
 
@@ -73,7 +73,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    getAuthMe(accessToken)
+    getCurrentUser(accessToken)
       .then((user) => {
         setSession((current) => {
           if (!current || current.accessToken !== accessToken) {
@@ -131,7 +131,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           return null;
         }
 
-        const user = await getAuthMe(session.accessToken);
+        const user = await getCurrentUser(session.accessToken);
         const nextSession = { ...session, user };
         setSession(nextSession);
         persistSession(nextSession);

@@ -295,7 +295,7 @@ export function AppShell({
                 <h1 className="font-heading text-3xl font-bold text-balance lg:text-4xl">
                   {title}
                 </h1>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
+                <p className="mt-2 line-clamp-3 max-w-2xl text-sm leading-6 text-muted-foreground">
                   {description}
                 </p>
               </div>
